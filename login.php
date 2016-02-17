@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['username'])) {
   header('Location: http://localhost');
 }
 
@@ -18,8 +18,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   if (count($results) === 1 && $results[0]['password'] === $password) {
-      echo "you logged in! yeahhhhhh!";
-      $_SESSION['user'] = $username;
+      $_SESSION['username'] = $results[0]['username'];
+      $_SESSION['user_id'] = $results[0]['id'];
       header('Location: http://localhost');
   } else {
       header('Location: http://localhost/login.php?wrong=1');
