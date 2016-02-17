@@ -21,6 +21,7 @@ echo '<h1>bloggggg</h1>';
 foreach($db->query('select * from posts') as $row) {
   echo "<h2>${row['title']}</h2><p>${row['body']}</p>";
   if ($logged_in) {
+    echo "<a href='edit.php?edit_post_id=${row['id']}'>edit post</a>";
     echo "<form method='POST' action='/delete.php'>";
     echo "  <input type='hidden' name='delete_post_id' value='${row['id']}'>";
     echo "  <input type='submit' name='submit' value='delete'>";
