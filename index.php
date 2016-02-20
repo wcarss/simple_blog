@@ -24,12 +24,12 @@ echo '<h2 class="subtitle">a blog by some guy for some reason</h2>';
 
 foreach($db->query('select p.id, p.title, p.body, p.created_at, u.username, u.id as user_id from posts p inner join users u on p.author_id = u.id') as $row) {
 
-  $username = htmlspecialchars($username);
+  $post_username = htmlspecialchars($row['username']);
   $title = htmlspecialchars($row['title']);
   $body = htmlspecialchars($row['body']);
 
   echo "<h2>${title}</h2><p>${body}</p>";
-  echo "<div><small>by <a href='user.php?user_id=${row['user_id']}'>${username}</a> at ${row['created_at']}</small>";
+  echo "<div><small>by <a href='user.php?user_id=${row['user_id']}'>${post_username}</a> at ${row['created_at']}</small>";
 
   if ($logged_in) {
     echo "<a href='edit.php?edit_post_id=${row['id']}'>edit</a>";
