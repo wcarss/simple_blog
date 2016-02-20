@@ -11,7 +11,7 @@ if (isset($_SESSION['username'])) {
 if ($logged_in) {
   echo "<small>hello, <a href='user.php?edit_user_id=${user_id}'>${username}</a>! <a href='/logout.php'>logout</a></small>";
 } else {
-  echo "<small>hello, unregistered user! <a href='/login.php'>login</a></small>";
+  echo "<small>hello, unregistered user! <a href='/login.php'>login</a> or <a href='/signup.php'>signup</a></small>";
 }
 
 $db = new PDO('mysql:host=localhost;dbname=blog_app;charset=utf8', 'blog_app_user', 'sekret');
