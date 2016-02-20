@@ -6,15 +6,23 @@ if (!isset($_SESSION['username'])) {
   exit;
 }
 
-$db = new PDO('mysql:host=localhost;dbname=blog_app;charset=utf8', 'blog_app_user', 'sekret');
+if (!isset($_POST['title']) || !isset($_POST['body'])) {
+  header('Location: http://localhost');
+  exit;
+}
 
 $title = $_POST['title'];
 $body = $_POST['body'];
+$user_id = $_SESSION['user_id'];
 
-if ($title !== "" and $body !== "") {
-  $sql = "insert into posts (title, body, author_id) values (?, ?, 1);";
-  $db->prepare($sql)->execute([$title, $body]);
+if ($POST['title'] === "" || $body === "") {
+  header('Location: http://localhost');
+  exit;
 }
+
+$db = new PDO('mysql:host=localhost;dbname=blog_app;charset=utf8', 'blog_app_user', 'sekret');
+$sql = "insert into posts (title, body, author_id) values (?, ?, ?)";
+$db->prepare($sql)->execute([$title, $body, $user_id]);
 
 header('Location: http://localhost');
 ?>
