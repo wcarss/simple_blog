@@ -55,8 +55,11 @@ if (isset($_POST['edit_user_id']) && isset($_POST['edit_email']) && isset($_POST
   $username = htmlspecialchars($results[0]['username'], ENT_HTML5 | ENT_QUOTES);
   $description = htmlspecialchars($results[0]['description'], ENT_HTML5 | ENT_QUOTES);
 
-  echo "<html><body>";
-  echo "<h2>edit post</h2>";
+  echo '<html><head>';
+  echo '<link href="style.css" rel="stylesheet" type="text/css">';
+  echo '</head><body>';
+
+  echo "<h2>edit user</h2>";
   echo "<form method='POST' action='user.php'>";
   echo "  <p>email: <input type='text' name='edit_email' value='$email'><br>";
   echo "  username: <input type='text' name='edit_username' value='$username'><br>";
@@ -76,7 +79,9 @@ if (isset($_POST['edit_user_id']) && isset($_POST['edit_email']) && isset($_POST
   $stmt->execute([$id]);
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  echo "<html><body>";
+  echo '<html><head>';
+  echo '<link href="style.css" rel="stylesheet" type="text/css">';
+  echo '</head><body>';
   if (count($results) !== 1) {
     echo "<p>Looks like somebody's barking up the wrong bush!&lt;/simpsons_reference&gt;<br>";
     echo "(that user doesn't seem to exist.)</p>";
@@ -84,14 +89,16 @@ if (isset($_POST['edit_user_id']) && isset($_POST['edit_email']) && isset($_POST
     $email = htmlspecialchars($results[0]['email'], ENT_HTML5 | ENT_QUOTES);
     $username = htmlspecialchars($results[0]['username'], ENT_HTML5 | ENT_QUOTES);
     $description = htmlspecialchars($results[0]['description'], ENT_HTML5 | ENT_QUOTES);
-    echo "<h2>user: $username</h2>";
+    echo "<h2>$username</h2>";
     echo "<p>$email</p>";
     echo "<p>$description</p>";
   }
   echo "<p>Go <a href='index.php'>home</a>";
   echo "</body></html>";
 } else {
-  echo "<html><body>";
+  echo '<html><head>';
+  echo '  <link href="style.css" rel="stylesheet" type="text/css">';
+  echo '</head><body>';
   echo "<p>Damnit jim! That's not enough information for me to do any good!</p>";
   echo "<p>Go <a href='index.php'>home</a><br>";
   echo "<small>and don't disappoint bones again</small></p>";

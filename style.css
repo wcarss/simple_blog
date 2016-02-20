@@ -1,0 +1,41 @@
+body {
+  width: 600px;
+  margin: 50 auto;
+  font-family: "arial";
+}
+
+h2 {
+  margin-top: 1.4em;
+  margin-bottom: 0.2em;
+  font-weight: normal;
+}
+
+h1 {
+  margin-bottom: 0.4em;
+}
+
+p {
+  margin-top: 0.1em;
+}
+
+input[type="text"] {
+  margin-bottom: 0.2em;
+}
+
+form {
+  display: inline-block;
+}
+
+.delete_post {
+  width: 16px;
+  height: 16px;
+  border: none;
+  margin-top: 5px;
+  margin-left: 20px;
+  background: url(http://findicons.com/icon/download/158568/trash_recyclebin_empty_closed/16/png) no-repeat;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  margin-top: 0.2em;
+}

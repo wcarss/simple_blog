@@ -25,7 +25,10 @@ if (isset($_POST['title']) && isset($_POST['body']) && isset($_POST['edit_post_i
   $stmt->execute([$id]);
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  echo "<html><body>";
+  echo '<html><head>';
+  echo '<link href="style.css" rel="stylesheet" type="text/css">';
+  echo '</head><body>';
+
   if (count($results) !== 1) {
     echo "<p>Whoops! We couldn't find a single post you're referring to, and we're definitely not going to let you edit zero or many. Consider a profession outdoors, perhaps.<br>";
     echo "<small>(just kidding, but the outdoors <em>is</em> pretty nice!)</small></p>";
@@ -35,8 +38,8 @@ if (isset($_POST['title']) && isset($_POST['body']) && isset($_POST['edit_post_i
 
     echo "<h2>edit post</h2>";
     echo "<form method='POST' action='edit.php'>";
-    echo "  <input type='text' name='title' value='$title'>";
-    echo "  <input type='text' name='body' value='$body'>";
+    echo "  <input type='text' name='title' value='$title'><br>";
+    echo "  <textarea name='body' rows=20 cols=60>$body</textarea><br>";
     echo "  <input type='hidden' name='edit_post_id' value='$id'>";
     echo "  <input type='submit' name='submit' value='submit'>";
     echo "</form>";

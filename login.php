@@ -25,6 +25,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
       header('Location: http://localhost/login.php?wrong=1');
   }
 } else {
+
+  echo '<html><head>';
+  echo '<link href="style.css" rel="stylesheet" type="text/css">';
+  echo '</head><body>';
+
   if (isset($_GET['wrong'])) {
     echo "<h3>wrong username or password!</h3>";
   }
@@ -32,11 +37,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     echo "<h3>you need to be logged in to post!</h3>";
   }
 
+  echo '<h1>login</h1>';
   echo '<form method="POST" action="/login.php">';
-  echo '  <input type="text" name="username">';
-  echo '  <input type="password" name="password">';
+  echo '  <input type="text" name="username" placeholder="username">';
+  echo '  <input type="password" name="password" placeholder="password">';
   echo '  <input type="submit" name="submit" value="submit">';
   echo '</form>';
   echo '<p>Back to <a href="/">home</a></p>';
+  echo "</body></html>";
 }
 ?>
